@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>Генератор примеров</title>
+        <style>
+            .math-example .header{
+                font-size: xxx-large;
+                font-weight: bold;
+            }
+            .math-example .input-data p{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="math-example">
+        <div class="header">Умножение двузначных чисел на однозначное</div>
+        <div class="input-data">
+            <p>
+                Первые числа двузначного числа(через пробел):
+                <input class="input-data-first-digits" type="text"/>
+            </p>
+        </div>
+        <input type="button" class="generate-multiply" value="Сгенерировать примеры"/>
+    </div>
+    <div class="math-example">
+        <div class="header">Деление чисел</div>
+        <div class="input-data">
+            <p>
+                Диапазон ответов (через пробел):
+                <input class="input-data-division-result" type="text"/>
+            </p>
+        </div>
+        <input type="button" class="generate-division" value="Сгенерировать примеры"/>
+    </div>
+    </body>
+</html>
