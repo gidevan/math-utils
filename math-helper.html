@@ -1,36 +1,48 @@
 <html xmlns="http://www.w3.org/1999/html">
     <head>
         <title>Генератор примеров</title>
-        <style>
-            .math-example .header{
-                font-size: xxx-large;
-                font-weight: bold;
-            }
-            .math-example .input-data p{
-                font-weight: bold;
-            }
-        </style>
+        <link rel="stylesheet" href="math-helper.css">
+        <script type="text/javascript" src="math-helper.js">
+        </script>
     </head>
     <body>
     <div class="math-example">
         <div class="header">Умножение двузначных чисел на однозначное</div>
+        <div id = "multiply-errors" class ="errors">
+        </div>
         <div class="input-data">
             <p>
                 Первые числа двузначного числа(через пробел):
-                <input class="input-data-first-digits" type="text"/>
+                <input id="multiply-data" class="input-data-first-digits" type="text"/>
+            </p>
+            <p>
+                Количество примеров:
+                <input id="multiply-example-count" class="input-data-first-digits" type="text" value="7"/>
             </p>
         </div>
-        <input type="button" class="generate-multiply" value="Сгенерировать примеры"/>
+        <input type="button" class="generate-multiply" value="Сгенерировать примеры" onclick="generateMultiply()"/>
+        <div id="multiply-examples" class="example-container">
+        </div>
     </div>
     <div class="math-example">
+
         <div class="header">Деление чисел</div>
+        <div id = "division-errors" class ="errors">
+        </div>
         <div class="input-data">
             <p>
                 Диапазон ответов (через пробел):
-                <input class="input-data-division-result" type="text"/>
+                <input id="division-data" class="input-data-division-result" type="text"/>
             </p>
+            <p>
+                Количество примеров:
+                <input id="division-example-count" class="input-data-first-digits" type="text" value="7"/>
+            </p>
+            <div class="example-container">
+                division
+            </div>
         </div>
-        <input type="button" class="generate-division" value="Сгенерировать примеры"/>
+        <input type="button" class="generate-division" value="Сгенерировать примеры" onclick="generateDivision()"/>
     </div>
     </body>
 </html>

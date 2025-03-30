@@ -1,0 +1,16 @@
+.math-example .header {
+    font-size: xxx-large;
+    font-weight: bold;
+}
+
+.math-example .input-data p{
+    font-weight: bold;
+}
+
+.errors p {
+    color: red
+}
+
+.example-container {
+    font-weight: bold;
+}
