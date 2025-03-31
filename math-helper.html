@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/html">
     <head>
+        <meta charset="UTF-8">
         <title>Генератор примеров</title>
         <link rel="stylesheet" href="math-helper.css">
         <script type="text/javascript" src="math-helper.js">
@@ -38,11 +39,10 @@
                 Количество примеров:
                 <input id="division-example-count" class="input-data-first-digits" type="text" value="7"/>
             </p>
-            <div class="example-container">
-                division
-            </div>
         </div>
         <input type="button" class="generate-division" value="Сгенерировать примеры" onclick="generateDivision()"/>
+        <div id="division-examples" class="example-container">
+        </div>
     </div>
     </body>
 </html>

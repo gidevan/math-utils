@@ -1,5 +1,7 @@
 const DELIMETER = " "
+const MIN_RANDOM_INT = 2;
 const MAX_RANDOM_INT = 8;
+const EXPECTED_RANGE_DATA = 2;
 
 
 function generateMultiply() {
@@ -43,8 +45,52 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+function getRandomIntRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function generateDivision() {
-    console.log("Division: ")
+    console.log("Division: ");
+    document.getElementById('division-errors').innerHTML = '';
+    let rangeData = document.getElementById("division-data").value;
+    let errors = validateRangeData(rangeData);
+    if (errors != undefined && errors.length == 0) {
+            console.log("Generate division");
+            let examples = generateDivisionExamples(rangeData);
+            showExamples(examples, 'division-examples')
+        } else {
+            showErrors(errors, 'division-errors');
+        }
+}
+
+function generateDivisionExamples(rangeData) {
+    let countExample = document.getElementById("division-example-count").value;
+    let values = rangeData.split(DELIMETER);
+    console.log("Division example: " + countExample);
+    let examples = new Set();
+    let digitIndex = 0;
+    let value1 = parseInt(values[0]);
+    let value2 = parseInt(values[1]);
+    let i =0;
+    do {
+        do {
+            console.log("Range data: ", value1, value2);
+            let firstMultiplier = getRandomIntRange(value1, value2);
+            let secondMultiplier = getRandomIntRange(MIN_RANDOM_INT, MAX_RANDOM_INT) + 1;
+            let multiplyResult = firstMultiplier * secondMultiplier;
+            console.log("firstMultiplier: " + firstMultiplier + "*" + secondMultiplier);
+            let example = "" + multiplyResult + " : " + secondMultiplier + " = ";
+            console.log("example", example);
+            console.log("examples.has", examples.has(example));
+            if (!examples.has(example)) {
+                examples.add(example);
+                i++;
+                break;
+            }
+        } while (false);
+
+    } while (i < countExample)
+    return Array.from(examples);
 }
 
 function showExamples(examples, containerElementId) {
@@ -71,6 +117,29 @@ function validateMultiply(multiplyData) {
     let countExample = document.getElementById("multiply-example-count").value;
     if (isNaN(parseInt(countExample))) {
         errors.push("Значение количества примеров [" + countExample + "] должно быть целым");
+    }
+    return errors;
+}
+
+function validateRangeData(rangeData) {
+    let errors = [];
+    let data = rangeData.split(DELIMETER);
+    if (data.length != EXPECTED_RANGE_DATA) {
+        errors.push("Нужно ввести два целых числа разделённых пробелом")
+    } else {
+        let isDigits = true;
+        data.forEach(el => {
+                if( isNaN(parseInt(el))) {
+                    errors.push("Значение [" + el + "] не целое число");
+                    isDigits = false;
+                }
+        });
+        if (isDigits) {
+            if (parseInt(data[0]) >= parseInt(data[1])) {
+                errors.push("Неверно указан диапазон ответов. Первое число должно быть меньше второго");
+            }
+        }
+
     }
     return errors;
 }
