@@ -29,7 +29,7 @@ function generateMultiplyExamples(multiplyData) {
 
         do {
            let secondMultiplier = getRandomInt(MAX_RANDOM_INT) + 1;
-           let example = "" + firstMultiplier + " * " + secondMultiplier + " = ";
+           let example = "" + firstMultiplier + " \u2219 " + secondMultiplier + " = ";
            if (!examples.has(example)) {
                 examples.add(example);
                 break;
